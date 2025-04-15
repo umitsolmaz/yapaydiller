@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Diller Arşivi</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --accent-color: #4fc3f7;
+            --border-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0 auto;
+            max-width: 900px;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            font-size: 1em;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: #1a1a1a;
+            color: var(--text-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .filter-buttons button {
+            padding: 8px 14px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            color: var(--text-color);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .filter-buttons button:hover {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        details {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        summary {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        h3 {
+            margin-top: 10px;
+            color: #ccc;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .timeline {
+            margin: 40px 0;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        .timeline-event {
+            margin-bottom: 20px;
+        }
+
+        .timeline-event time {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            summary {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🧠 Yapay Diller Arşivi</h1>
+    <input type="text" id="searchInput" placeholder="Dil adı veya anahtar kelimeyle ara... 🔍">
+    <div class="filter-buttons">
+        <button onclick="filterGroup('all')">Tümü</button>
+        <button onclick="filterGroup('uluslararasi')">🌍 Uluslararası</button>
+        <button onclick="filterGroup('kurgusal')">🎭 Kurgusal</button>
+        <button onclick="filterGroup('mantiksal')">🔬 Mantıksal</button>
+        <button onclick="filterGroup('mistik')">🔮 Mistik</button>
+        <button onclick="filterGroup('kayip')">🗿 Kaybolmuş</button>
+        <button onclick="filterGroup('modern')">🚀 Modern</button>
+    </div>
+    <div id="accordionContainer">
+        <!-- Ek Diller -->
+        <details data-group="modern">
+            <summary>🧬 Ithkuil</summary>
+            <h3>Alfabe:</h3>
+            <p>Latin alfabesi temelli; karmaşık morfemler</p>
+            <h3>Gramer:</h3>
+            <p>Yüksek bilgi yoğunluğu, anlam ayırt edici yapı</p>
+            <h3>Örnekler:</h3>
+            <ul><li>traiļälļ – Duygusal tepkiyi bastırma isteği</li></ul>
+        </details>
+
+        <details data-group="modern">
+            <summary>🌐 Elomi</summary>
+            <h3>Alfabe:</h3>
+            <p>Özgün 16 sembollü fonetik sistem</p>
+            <h3>Gramer:</h3>
+            <p>Yankı temelli iletişim, tonlu eklemlemeler</p>
+            <h3>Örnekler:</h3>
+            <ul><li>eísha – Ruh</li><li>ka’leth – Büyü</li></ul>
+        </details>
+
+        <details data-group="kayip">
+            <summary>🌍 N|uu</summary>
+            <h3>Alfabe:</h3>
+            <p>Latin temelli, klik sesler içerir</p>
+            <h3>Gramer:</h3>
+            <p>Yerli Güney Afrika dil ailesi; nesne-fiil-özne dizilimi</p>
+            <h3>Örnekler:</h3>
+            <ul><li>ǃʼãu – Ateş</li></ul>
+        </details>
+
+        <details data-group="kayip">
+            <summary>🦴 !Xóõ</summary>
+            <h3>Alfabe:</h3>
+            <p>Latin + özel klik sembolleri</p>
+            <h3>Gramer:</h3>
+            <p>Ses açısından en karmaşık dillerden biri</p>
+            <h3>Örnekler:</h3>
+            <ul><li>ǃXóõ – Halkın adı</li></ul>
+        </details>
+
+        <details data-group="kayip">
+            <summary>⛰️ Ainu</summary>
+            <h3>Alfabe:</h3>
+            <p>Katakana ile yazılmış; Japonya kökenli</p>
+            <h3>Gramer:</h3>
+            <p>Özne-Nesne-Fiil; benzersiz fonetik yapı</p>
+            <h3>Örnekler:</h3>
+            <ul><li>Kamuy – Tanrı</li><li>Ainu – İnsan</li></ul>
+        </details>
+
+        <details data-group="kayip">
+            <summary>🌊 Liv</summary>
+            <h3>Alfabe:</h3>
+            <p>Latin alfabesi</p>
+            <h3>Gramer:</h3>
+            <p>Ural dili, Fin-Ugor ailesi</p>
+            <h3>Örnekler:</h3>
+            <ul><li>miza – Su</li><li>võl – Dil</li></ul>
+        </details>
+
+        <details data-group="kayip">
+            <summary>🌲 Yurok</summary>
+            <h3>Alfabe:</h3>
+            <p>Latin harfleri</p>
+            <h3>Gramer:</h3>
+            <p>Polisentetik yapı, Kaliforniya yerlisi</p>
+            <h3>Örnekler:</h3>
+            <ul><li>Ne-puey – Ev</li><li>Kues – Balık</li></ul>
+        </details>
+
+        <details data-group="kurgusal">
+            <summary>🧝 Quenya</summary>
+            <h3>Alfabe:</h3>
+            <p>Tengwar alfabesi</p>
+            <h3>Gramer:</h3>
+            <p>Latince benzeri kurallar</p>
+            <h3>Örnekler:</h3>
+            <ul><li>Elentári – Yıldız Kraliçesi</li><li>Elen – Yıldız</li></ul>
+        </details>
+
+        <details data-group="kurgusal">
+            <summary>🌿 Sindarin</summary>
+            <h3>Alfabe:</h3>
+            <p>Tengwar veya Cirth</p>
+            <h3>Gramer:</h3>
+            <p>Keltik etkili yapı</p>
+            <h3>Örnekler:</h3>
+            <ul><li>Mellon – Arkadaş</li><li>Gurth – Ölüm</li></ul>
+        </details>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-event">
+            <time>1150</time> – Hildegard von Bingen, <strong>Lingua Ignota</strong>'yı yarattı.
+        </div>
+        <div class="timeline-event">
+            <time>1580</time> – <strong>Balaibalan</strong> ilk kez metinlerde belirdi.
+        </div>
+        <div class="timeline-event">
+            <time>1887</time> – <strong>Esperanto</strong> yayınlandı.
+        </div>
+        <div class="timeline-event">
+            <time>2004</time> – <strong>Ithkuil</strong> duyuruldu.
+        </div>
+        <div class="timeline-event">
+            <time>2023</time> – <strong>Elomi</strong> geliştirildi.
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const accordions = document.querySelectorAll("#accordionContainer details");
+
+        searchInput.addEventListener("keyup", function () {
+            const filter = this.value.toLowerCase();
+            accordions.forEach(function (accordion) {
+                const text = accordion.innerText.toLowerCase();
+                accordion.classList.toggle("hidden", !text.includes(filter));
+            });
+        });
+
+        function filterGroup(group) {
+            accordions.forEach(acc => {
+                if (group === 'all') {
+                    acc.classList.remove("hidden");
+                } else {
+                    acc.classList.toggle("hidden", acc.dataset.group !== group);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
